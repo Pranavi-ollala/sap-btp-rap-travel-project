@@ -1,0 +1,45 @@
+@Metadata.layer: #PARTNER
+annotate entity ZI_BOOKING_PROJ
+    with 
+{
+@UI.facet: [ { 
+
+purpose : #HEADER,
+id : 'Header',
+label : 'Header display',
+type: #IDENTIFICATION_REFERENCE
+} ,
+{ type: #FIELDGROUP_REFERENCE,
+  label: 'General Information',
+  targetQualifier : 'info'
+},
+{
+purpose: #STANDARD,
+type: #LINEITEM_REFERENCE,
+targetElement: '_travel',
+label: 'Travel information table',
+position: 10
+
+ 
+
+
+}
+]
+    @UI.selectionField: [ { position: 10 } ]
+    @UI.lineItem : [ { position: 10 } ]
+    @UI.identification: [ { position: 10 } ]
+    @UI.fieldGroup : [ { qualifier : 'info' } ]
+    TravelId;
+    @UI.selectionField: [ { position: 20 } ]
+    @UI.lineItem : [ { position: 20 } ]
+    @UI.fieldGroup : [ { qualifier : 'info' } ]
+    BookingId;
+    @UI.selectionField : [ { position: 30 } ]
+    @UI.lineItem : [ { position: 30 } ]
+    @UI.dataPoint : { qualifier : 'dataqualifier' } 
+    @UI.fieldGroup : [ { qualifier : 'info' } ]
+    Price;
+    /* Associations */
+
+    
+}

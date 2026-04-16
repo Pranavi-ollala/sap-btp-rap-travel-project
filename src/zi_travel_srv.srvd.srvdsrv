@@ -1,0 +1,5 @@
+@EndUserText.label: 'Service defination for the travel account'
+define service ZI_TRAVEL_SRV {
+  expose ZI_TRAVEL_PROJ;
+  expose ZI_BOOKING_PROJ;
+}

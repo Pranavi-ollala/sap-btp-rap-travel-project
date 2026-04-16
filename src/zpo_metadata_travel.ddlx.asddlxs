@@ -1,0 +1,83 @@
+@Metadata.layer: #PARTNER
+@UI.headerInfo: { 
+  typeNamePlural: 'Travel Information',
+  typeName: 'Travel',
+  title: { type: #STANDARD, value: 'Name' },
+  description: { value: 'TravelId' }
+  
+}
+
+annotate entity ZI_TRAVEL_PROJ
+with
+{
+
+  @UI.facet: [
+
+    // 🔹 MAIN CONTAINER
+    {
+      id: 'Main',
+      type: #COLLECTION,
+      label: 'Travel Details',
+      position: 30
+    },
+
+    // 🔹 GENERAL INFORMATION
+    {
+      id: 'GeneralInfo',
+      parentId: 'Main',
+      type: #FIELDGROUP_REFERENCE,
+      targetQualifier: 'Information',
+      label: 'General Information',
+      position: 10
+    },
+    { 
+    purpose: #STANDARD,
+    type: #LINEITEM_REFERENCE,
+    targetQualifier : '_BOOKING',
+    label: 'Booking table'  ,
+    position: 20
+     
+    }
+
+  ]
+
+  // =========================
+  // 🔹 FIELDS
+  // =========================
+
+  @UI.selectionField: [ { position: 10 } ]
+  @UI.lineItem: [ { position: 10 } ]
+  @UI.fieldGroup: [ { qualifier: 'Information', position: 10 } ]
+  TravelId;
+
+
+  @UI.selectionField: [ { position: 20 } ]
+ @UI.lineItem: [ { position: 20 } ]
+  @UI.fieldGroup: [ { qualifier: 'Information', position: 20 } ]
+  Name;
+
+
+  @UI.selectionField: [ { position: 30 } ]
+  @UI.lineItem: [ { position: 30 } ]
+  @UI.fieldGroup: [ { qualifier: 'Information', position: 30 } ]
+
+  TotalPrice;
+
+
+  @UI.selectionField: [ { position: 40 } ]
+  @UI.lineItem: [ 
+    { 
+      position: 40,
+      importance: #HIGH,
+      criticality: 'Status_Check'
+    } 
+  ]
+
+  @UI.fieldGroup: [ { qualifier: 'Information', position: 40 } ]
+  Status;
+  
+  
+  @UI.lineItem : [ { position: 20 } ]
+  _BOOKING;
+
+}

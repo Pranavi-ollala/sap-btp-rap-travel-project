@@ -1,0 +1,28 @@
+managed implementation in class zbp_i_travel_po unique;
+strict ( 2 );
+
+define behavior for ZI_TRAVEL_PO //alias <alias_name>
+persistent table zpo_travel
+lock master
+authorization master ( global )
+//etag master <field_name>
+{
+  create ( authorization : global );
+  update;
+  delete;
+  field ( readonly ) TravelId;
+  association _BOOKING { create; }
+}
+
+define behavior for ZI_BOOKING_PO //alias <alias_name>
+persistent table zpo_booking
+lock dependent by _travel
+authorization dependent by _travel
+//etag master <field_name>
+{
+
+  update;
+  delete;
+  field ( readonly ) TravelId, BookingId;
+  association _travel;
+}
