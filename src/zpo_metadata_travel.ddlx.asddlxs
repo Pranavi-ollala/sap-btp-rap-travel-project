@@ -4,41 +4,32 @@
   typeName: 'Travel',
   title: { type: #STANDARD, value: 'Name' },
   description: { value: 'TravelId' }
-  
 }
-
 annotate entity ZI_TRAVEL_PROJ
 with
 {
-
   @UI.facet: [
-
     // 🔹 MAIN CONTAINER
     {
       id: 'Main',
       type: #COLLECTION,
       label: 'Travel Details',
-      position: 30
+      position: 10
     },
 
     // 🔹 GENERAL INFORMATION
-    {
-      id: 'GeneralInfo',
-      parentId: 'Main',
-      type: #FIELDGROUP_REFERENCE,
-      targetQualifier: 'Information',
-      label: 'General Information',
-      position: 10
-    },
     { 
-    purpose: #STANDARD,
+    type: #IDENTIFICATION_REFERENCE,
+    parentId: 'Main' 
+    },
+    
+  {
+    id: 'Booking',
     type: #LINEITEM_REFERENCE,
-    targetQualifier : '_BOOKING',
-    label: 'Booking table'  ,
+    label: 'Booking Details',
+    targetElement: '_BOOKING',
     position: 20
-     
-    }
-
+  }
   ]
 
   // =========================
@@ -48,22 +39,23 @@ with
   @UI.selectionField: [ { position: 10 } ]
   @UI.lineItem: [ { position: 10 } ]
   @UI.fieldGroup: [ { qualifier: 'Information', position: 10 } ]
+  @UI.identification: [ {position: 10, label: 'TRAVELID' } ]
   TravelId;
 
 
   @UI.selectionField: [ { position: 20 } ]
  @UI.lineItem: [ { position: 20 } ]
   @UI.fieldGroup: [ { qualifier: 'Information', position: 20 } ]
+   @UI.identification: [ {position: 12, label: 'NAME' } ]
   Name;
 
 
   @UI.selectionField: [ { position: 30 } ]
   @UI.lineItem: [ { position: 30 } ]
   @UI.fieldGroup: [ { qualifier: 'Information', position: 30 } ]
+   @UI.identification: [ {position: 30, label: 'PRICE' } ]
 
   TotalPrice;
-
-
   @UI.selectionField: [ { position: 40 } ]
   @UI.lineItem: [ 
     { 
@@ -74,10 +66,6 @@ with
   ]
 
   @UI.fieldGroup: [ { qualifier: 'Information', position: 40 } ]
+   @UI.identification: [ {position: 40, label: 'STATUS' } ]
   Status;
-  
-  
-  @UI.lineItem : [ { position: 20 } ]
-  _BOOKING;
-
 }

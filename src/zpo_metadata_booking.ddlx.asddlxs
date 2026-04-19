@@ -12,32 +12,21 @@ type: #IDENTIFICATION_REFERENCE
 { type: #FIELDGROUP_REFERENCE,
   label: 'General Information',
   targetQualifier : 'info'
-},
-{
-purpose: #STANDARD,
-type: #LINEITEM_REFERENCE,
-targetElement: '_travel',
-label: 'Travel information table',
-position: 10
-
- 
-
-
 }
 ]
     @UI.selectionField: [ { position: 10 } ]
     @UI.lineItem : [ { position: 10 } ]
     @UI.identification: [ { position: 10 } ]
-    @UI.fieldGroup : [ { qualifier : 'info' } ]
+    @UI.fieldGroup : [ { position: 10, qualifier : 'info' ,label: 'TravelID'} ]
     TravelId;
     @UI.selectionField: [ { position: 20 } ]
     @UI.lineItem : [ { position: 20 } ]
-    @UI.fieldGroup : [ { qualifier : 'info' } ]
+    @UI.fieldGroup : [ { position: 20, qualifier : 'info',label: 'BookingID' } ]
     BookingId;
     @UI.selectionField : [ { position: 30 } ]
-    @UI.lineItem : [ { position: 30 } ]
     @UI.dataPoint : { qualifier : 'dataqualifier' } 
-    @UI.fieldGroup : [ { qualifier : 'info' } ]
+    @UI.lineItem : [ { position: 30 } ]
+    @UI.fieldGroup : [ { position: 30, qualifier : 'info' ,label: 'Price'} ]
     Price;
     /* Associations */
 
